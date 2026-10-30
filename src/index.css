@@ -1,1 +1,311 @@
 @import "tailwindcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+/* Office 2013+ Theme Colors */
+:root {
+  --office-blue: #2b579a;
+  --office-green: #217346;
+  --office-orange: #d24726;
+  --office-purple: #7719aa;
+  --office-red: #b7472a;
+  --ribbon-bg: #f3f3f3;
+  --ribbon-border: #d4d4d4;
+  --title-bar-height: 32px;
+  --ribbon-height: 95px;
+  --tab-height: 28px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Ribbon button styles */
+.ribbon-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 11px;
+  color: #444;
+  min-width: 44px;
+  transition: all 0.1s;
+}
+
+.ribbon-btn:hover {
+  background-color: #cde6f7;
+  border-color: #92c0e0;
+}
+
+.ribbon-btn:active {
+  background-color: #92c0e0;
+}
+
+.ribbon-btn-large {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4px 12px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 11px;
+  color: #444;
+  min-width: 60px;
+  transition: all 0.1s;
+}
+
+.ribbon-btn-large:hover {
+  background-color: #cde6f7;
+  border-color: #92c0e0;
+}
+
+.ribbon-btn-large:active {
+  background-color: #92c0e0;
+}
+
+.ribbon-btn-large .icon {
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+
+.ribbon-btn-small {
+  display: flex;
+  align-items: center;
+  padding: 2px 6px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 11px;
+  color: #444;
+  gap: 4px;
+  transition: all 0.1s;
+}
+
+.ribbon-btn-small:hover {
+  background-color: #cde6f7;
+  border-color: #92c0e0;
+}
+
+/* Tab styles */
+.ribbon-tab {
+  padding: 4px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  color: #444;
+  transition: all 0.1s;
+}
+
+.ribbon-tab:hover {
+  background-color: #cde6f7;
+}
+
+.ribbon-tab.active {
+  color: var(--office-blue);
+  border-bottom-color: var(--office-blue);
+  background-color: #f3f3f3;
+}
+
+/* Content editable area */
+.word-page {
+  width: 816px;
+  min-height: 1056px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  padding: 96px;
+  margin: 20px auto;
+  font-family: 'Calibri', sans-serif;
+  font-size: 11pt;
+  line-height: 1.5;
+  outline: none;
+}
+
+/* Excel cell styles */
+.excel-cell {
+  border: 1px solid #d4d4d4;
+  padding: 2px 4px;
+  font-size: 11px;
+  font-family: 'Calibri', sans-serif;
+  min-width: 80px;
+  height: 22px;
+  outline: none;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.excel-cell:focus {
+  border: 2px solid #217346;
+  padding: 1px 3px;
+}
+
+.excel-cell.selected {
+  border: 2px solid #217346;
+  padding: 1px 3px;
+}
+
+.excel-header {
+  background: #f0f0f0;
+  border: 1px solid #d4d4d4;
+  text-align: center;
+  font-size: 11px;
+  font-weight: normal;
+  padding: 2px 4px;
+  min-width: 80px;
+  height: 22px;
+  user-select: none;
+}
+
+.excel-row-header {
+  background: #f0f0f0;
+  border: 1px solid #d4d4d4;
+  text-align: center;
+  font-size: 11px;
+  font-weight: normal;
+  padding: 2px 4px;
+  width: 40px;
+  min-width: 40px;
+  height: 22px;
+  user-select: none;
+}
+
+/* PowerPoint slide */
+.ppt-slide {
+  width: 720px;
+  height: 405px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.ppt-slide.selected {
+  outline: 3px solid #2b579a;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.2s ease-in;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #d4d4d4;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  min-width: 200px;
+  z-index: 1000;
+  padding: 4px 0;
+}
+
+.dropdown-item {
+  padding: 6px 24px;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-divider {
+  height: 1px;
+  background: #e0e0e0;
+  margin: 4px 0;
+}
+
+/* Color picker grid */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 20px);
+  gap: 2px;
+  padding: 8px;
+}
+
+.color-swatch {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
+.color-swatch:hover {
+  border-color: #333;
+  transform: scale(1.1);
+}
+
+/* Status bar */
+.status-bar {
+  height: 24px;
+  background: var(--office-blue);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-size: 11px;
+  justify-content: space-between;
+}
+
+/* File menu overlay */
+.file-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 2000;
+  display: flex;
+}
+
+.file-menu-sidebar {
+  width: 200px;
+  background: var(--office-blue);
+  color: white;
+  padding: 20px 0;
+}
+
+.file-menu-content {
+  flex: 1;
+  padding: 40px;
+}
